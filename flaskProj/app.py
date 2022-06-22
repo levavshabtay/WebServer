@@ -52,7 +52,7 @@ def users_page():
     # search form - get method
     if request.method == 'GET':
         if 'email' in request.args:
-            email = request.args['email']
+            email = request.args['email'].lower()
             if email in user_dict:
                 return render_template('assignment3_2.html',
                                        name=user_dict[email][0],
@@ -66,7 +66,7 @@ def users_page():
 
     # Post Case
     if request.method == 'POST':
-        email = request.form['email']
+        email = request.form['email'].lower()
         username = request.form['username']
         nickName = request.form['nickName']
         if email in user_dict:
